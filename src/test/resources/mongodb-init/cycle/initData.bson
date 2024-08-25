@@ -1,0 +1,7 @@
+{
+  "_id": ObjectId("64b0c3dfb1e9f1c1c1c1c1c1"),
+  "mdn": "9999999999",
+  "startDate": ISODate("2023-08-01T00:00:00Z"),
+  "endDate": ISODate("2023-09-01T00:00:00Z"),
+  "userId": "user_1"
+}
