@@ -1,6 +1,6 @@
 package com.bednarz.usmobile.api;
 
-import com.bednarz.usmobile.MongodbContainer;
+import com.bednarz.usmobile.BaseTest;
 import com.bednarz.usmobile.domain.dto.CreateUserRequest;
 import com.bednarz.usmobile.domain.dto.UpdateUserRequest;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -22,13 +23,17 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
-class UserControllerTest extends MongodbContainer {
+class UserControllerTest extends BaseTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @Autowired
     private ObjectMapper objectMapper;
+
+    @Autowired
+    MongoTemplate mongoTemplate;
+
 
     @Test
     public void createUserTest() throws Exception {
@@ -43,6 +48,7 @@ class UserControllerTest extends MongodbContainer {
                         .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.data.email").value("test@example.com"));
+
     }
 
     @Test
