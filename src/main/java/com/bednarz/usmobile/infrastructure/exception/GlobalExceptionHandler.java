@@ -10,6 +10,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.method.annotation.HandlerMethodValidationException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -35,19 +36,32 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<ApiResponse<?>> handleValidationExceptions(MethodArgumentNotValidException ex) {
+    @ExceptionHandler({MethodArgumentNotValidException.class, HandlerMethodValidationException.class})
+    public ResponseEntity<ApiResponse<?>> handleValidationExceptions(Exception ex) {
         Map<String, String> errors = new HashMap<>();
-        ex.getBindingResult().getAllErrors().forEach((error) -> {
-            String fieldName = ((FieldError) error).getField();
-            String errorMessage = error.getDefaultMessage();
-            errors.put(fieldName, errorMessage);
-        });
+
+        if (ex instanceof MethodArgumentNotValidException) {
+            MethodArgumentNotValidException manve = (MethodArgumentNotValidException) ex;
+            manve.getBindingResult().getAllErrors().forEach((error) -> {
+                String fieldName = ((FieldError) error).getField();
+                String errorMessage = error.getDefaultMessage();
+                errors.put(fieldName, errorMessage);
+            });
+        } else if (ex instanceof HandlerMethodValidationException) {
+            HandlerMethodValidationException hmve = (HandlerMethodValidationException) ex;
+            hmve.getAllValidationResults().forEach(violation -> {
+                String fieldName = violation.getMethodParameter().toString();
+                String errorMessage = violation.getResolvableErrors().get(0).getDefaultMessage();
+                errors.put(fieldName, errorMessage);
+            });
+        }
+
         return new ResponseEntity<>(ApiResponse.error(errors.toString()), HttpStatus.BAD_REQUEST);
     }
 
-//    @ExceptionHandler(Exception.class)
-//    public ResponseEntity<?> handleGlobalException(Exception ex, WebRequest request) {
-//        return new ResponseEntity<>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-//    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<?> handleGlobalException(Exception ex, WebRequest request) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 }
