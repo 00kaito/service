@@ -3,7 +3,7 @@ package com.bednarz.usmobile.domain.dto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
 import java.util.Date;
@@ -14,7 +14,7 @@ public class CycleDataResponse {
     private String id;
 
     @NotBlank(message = "MDN must not be blank")
-    @Size(min = 10, max = 10, message = "MDN must be 10 characters length")
+    @Pattern(regexp = "^[0-9]{10}$", message = "MDN must be 10 characters length")
     private String mdn;
 
     @NotNull(message = "Start date must not be null")

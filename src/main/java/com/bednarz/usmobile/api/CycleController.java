@@ -5,7 +5,7 @@ import com.bednarz.usmobile.domain.cycle.CycleService;
 import com.bednarz.usmobile.domain.dto.CycleDataResponse;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.Pattern;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,15 +21,18 @@ public class CycleController {
     private final CycleService cycleService;
 
     @GetMapping("/history")
-    public ResponseEntity<ApiResponse<List<CycleDataResponse>>> getCycleHistory(@RequestParam @NotBlank @Size(min = 10, max = 10) String mdn) {
+    public ResponseEntity<ApiResponse<List<CycleDataResponse>>> getCycleHistory(
+            @RequestParam @Pattern(regexp = "^[0-9]{10}$", message = "MDN must be 10 characters length") String mdn) {
         List<CycleDataResponse> cycles = cycleService.getCycleHistoryByMdn(mdn);
         return ResponseEntity.ok(ApiResponse.success(cycles));
     }
 
     @GetMapping("/usage/current")
     public ResponseEntity<ApiResponse<List<CycleDataResponse>>> getCurrentCycleUsage(
-            @RequestParam @NotBlank @Size(min = 10, max = 10) String mdn,
-            @RequestParam @NotBlank String userId) {
+            @RequestParam
+            @Pattern(regexp = "^[0-9]{10}$", message = "MDN must be 10 characters length")
+                    String mdn,
+            @RequestParam @NotBlank(message = "userId must not be blank") String userId) {
         List<CycleDataResponse> cycles = cycleService.getCurrentCycleUsage(mdn, userId);
         return ResponseEntity.ok(ApiResponse.success(cycles));
     }
