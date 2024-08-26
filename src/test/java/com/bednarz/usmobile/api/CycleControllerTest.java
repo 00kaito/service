@@ -1,10 +1,10 @@
 package com.bednarz.usmobile.api;
 
-import com.bednarz.usmobile.BaseTest;
-import com.bednarz.usmobile.domain.cycle.Cycle;
-import com.bednarz.usmobile.domain.cycle.CycleRepository;
-import com.bednarz.usmobile.domain.dailyusage.DailyUsage;
+import com.bednarz.usmobile.MongoBaseTest;
+import com.bednarz.usmobile.domain.billing.Cycle;
+import com.bednarz.usmobile.domain.billing.CycleRepository;
 import com.bednarz.usmobile.domain.dto.CycleDataResponse;
+import com.bednarz.usmobile.domain.usage.DailyUsage;
 import com.bednarz.usmobile.domain.user.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.AfterEach;
@@ -31,7 +31,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
-class CycleControllerTest extends BaseTest {
+class CycleControllerTest extends MongoBaseTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -89,7 +89,7 @@ class CycleControllerTest extends BaseTest {
     @Test
     public void createCycleTest_ReturnsValidationErrors() throws Exception {
         CycleDataResponse request = new CycleDataResponse();
-        request.setMdn("");  // Invalid MDN
+        request.setMdn("invalidMdn");
         request.setStartDate(new Date());
         request.setEndDate(new Date());
 
@@ -97,7 +97,7 @@ class CycleControllerTest extends BaseTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.error", containsString("MDN must be 10 characters length")));
+                .andExpect(jsonPath("$.error", containsString("MDN must be 10 digits long")));
     }
 
     @Test
@@ -114,12 +114,12 @@ class CycleControllerTest extends BaseTest {
 
     @Test
     public void getCycleHistoryTest_ReturnsValidationErrors() throws Exception {
-        String mdn = "";  // Invalid MDN
+        String invalidMdn = "";
 
         ResultActions resultActions = mockMvc.perform(get("/api/v1/cycles/history")
-                        .param("mdn", mdn))
+                        .param("mdn", invalidMdn))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.error", containsString("MDN must be 10 characters length")));
+                .andExpect(jsonPath("$.error", containsString("MDN must be 10 digits long")));
     }
 
     @Test
@@ -136,13 +136,13 @@ class CycleControllerTest extends BaseTest {
 
     @Test
     public void getCurrentCycleUsageTest_ReturnsValidationErrors() throws Exception {
-        String mdn = "";  // Invalid MDN
+        String invalidMdn = "";
         String userId = "test-user-id-3";
 
         ResultActions resultActions = mockMvc.perform(get("/api/v1/cycles/usage/current")
-                        .param("mdn", mdn)
+                        .param("mdn", invalidMdn)
                         .param("userId", userId))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.error", containsString("MDN must be 10 characters length")));
+                .andExpect(jsonPath("$.error", containsString("MDN must be 10 digits long")));
     }
 }

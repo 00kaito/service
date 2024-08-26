@@ -1,7 +1,7 @@
 package com.bednarz.usmobile;
 
-import com.bednarz.usmobile.domain.cycle.Cycle;
-import com.bednarz.usmobile.domain.dailyusage.DailyUsage;
+import com.bednarz.usmobile.domain.billing.Cycle;
+import com.bednarz.usmobile.domain.usage.DailyUsage;
 import com.bednarz.usmobile.domain.user.User;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;

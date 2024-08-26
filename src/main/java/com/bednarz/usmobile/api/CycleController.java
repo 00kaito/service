@@ -1,7 +1,7 @@
 package com.bednarz.usmobile.api;
 
 import com.bednarz.usmobile.application.ApiResponse;
-import com.bednarz.usmobile.domain.cycle.CycleService;
+import com.bednarz.usmobile.application.service.BillingApplicationService;
 import com.bednarz.usmobile.domain.dto.CycleDataResponse;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
@@ -18,28 +18,26 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CycleController {
 
-    private final CycleService cycleService;
+    private final BillingApplicationService cycleApplicationService;
 
     @GetMapping("/history")
     public ResponseEntity<ApiResponse<List<CycleDataResponse>>> getCycleHistory(
-            @RequestParam @Pattern(regexp = "^[0-9]{10}$", message = "MDN must be 10 characters length") String mdn) {
-        List<CycleDataResponse> cycles = cycleService.getCycleHistoryByMdn(mdn);
+            @RequestParam @Pattern(regexp = "^[0-9]{10}$", message = "MDN must be 10 digits long") String mdn) {
+        List<CycleDataResponse> cycles = cycleApplicationService.getCycleHistoryByMdn(mdn);
         return ResponseEntity.ok(ApiResponse.success(cycles));
     }
 
     @GetMapping("/usage/current")
     public ResponseEntity<ApiResponse<List<CycleDataResponse>>> getCurrentCycleUsage(
-            @RequestParam
-            @Pattern(regexp = "^[0-9]{10}$", message = "MDN must be 10 characters length")
-                    String mdn,
-            @RequestParam @NotBlank(message = "userId must not be blank") String userId) {
-        List<CycleDataResponse> cycles = cycleService.getCurrentCycleUsage(mdn, userId);
+            @RequestParam @Pattern(regexp = "^[0-9]{10}$", message = "MDN must be 10 digits long") String mdn,
+            @RequestParam @NotBlank String userId) {
+        List<CycleDataResponse> cycles = cycleApplicationService.getCurrentCycleUsage(mdn, userId);
         return ResponseEntity.ok(ApiResponse.success(cycles));
     }
 
     @PostMapping
     public ResponseEntity<ApiResponse<CycleDataResponse>> createCycle(@Valid @RequestBody CycleDataResponse cycleRequest) {
-        CycleDataResponse createdCycle = cycleService.createCycle(cycleRequest);
+        CycleDataResponse createdCycle = cycleApplicationService.createCycle(cycleRequest);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(ApiResponse.success(createdCycle));
     }

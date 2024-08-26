@@ -14,7 +14,7 @@ public class CycleDataResponse {
     private String id;
 
     @NotBlank(message = "MDN must not be blank")
-    @Pattern(regexp = "^[0-9]{10}$", message = "MDN must be 10 characters length")
+    @Pattern(regexp = "^[0-9]{10}$", message = "MDN must be 10 digits long")
     private String mdn;
 
     @NotNull(message = "Start date must not be null")

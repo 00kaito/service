@@ -1,4 +1,4 @@
-package com.bednarz.usmobile.domain.dailyusage;
+package com.bednarz.usmobile.domain.usage;
 
 import com.bednarz.usmobile.infrastructure.audit.AuditService;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +12,6 @@ import java.util.List;
 
 @Repository
 public interface DailyUsageRepository extends MongoRepository<DailyUsage, String> {
-
     List<DailyUsage> findByMdnAndUserId(String mdn, String userId);
 
     List<DailyUsage> findByUserIdAndUsageDateBetween(String userId, Date startDate, Date endDate);

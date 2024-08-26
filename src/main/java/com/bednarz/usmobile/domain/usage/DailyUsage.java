@@ -1,4 +1,4 @@
-package com.bednarz.usmobile.domain.dailyusage;
+package com.bednarz.usmobile.domain.usage;
 
 import com.bednarz.usmobile.infrastructure.audit.AuditInfo;
 import lombok.*;
@@ -23,7 +23,7 @@ import java.util.Date;
 public class DailyUsage extends AuditInfo {
     @Id
     private String id;
-    @Indexed(unique = true)
+    @Indexed
     private String mdn;
     private String userId;
     @Indexed

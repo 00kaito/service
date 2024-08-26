@@ -1,24 +1,22 @@
 package com.bednarz.usmobile.api;
 
 import com.bednarz.usmobile.application.ApiResponse;
+import com.bednarz.usmobile.application.service.UserApplicationService;
 import com.bednarz.usmobile.domain.dto.CreateUserRequest;
 import com.bednarz.usmobile.domain.dto.UpdateUserRequest;
 import com.bednarz.usmobile.domain.dto.UserResponse;
-import com.bednarz.usmobile.domain.user.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
-
 @RestController
 @RequestMapping("/api/v1/users")
 @RequiredArgsConstructor
 public class UserController {
 
-    private final UserService userService;
+    private final UserApplicationService userService;
 
     @PostMapping
     public ResponseEntity<ApiResponse<UserResponse>> createUser(@RequestBody @Valid CreateUserRequest createUserRequest) {
@@ -29,8 +27,8 @@ public class UserController {
 
     @GetMapping("/{id}")
     public ResponseEntity<ApiResponse<UserResponse>> getUserById(@PathVariable String id) {
-        Optional<UserResponse> user = userService.getUserById(id);
-        return user.map(value -> ResponseEntity.ok(ApiResponse.success(value)))
+        return userService.getUserById(id)
+                .map(user -> ResponseEntity.ok(ApiResponse.success(user)))
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND)
                         .body(ApiResponse.error("User not found")));
     }

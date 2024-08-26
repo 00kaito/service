@@ -1,6 +1,6 @@
 package com.bednarz.usmobile.api;
 
-import com.bednarz.usmobile.BaseTest;
+import com.bednarz.usmobile.MongoBaseTest;
 import com.bednarz.usmobile.domain.dto.CreateUserRequest;
 import com.bednarz.usmobile.domain.dto.UpdateUserRequest;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -23,7 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
-class UserControllerTest extends BaseTest {
+class UserControllerTest extends MongoBaseTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -84,7 +84,6 @@ class UserControllerTest extends BaseTest {
         String responseContent = mvcResult.getResponse().getContentAsString();
         String userId = JsonPath.read(responseContent, "$.data.id");
 
-        // Fetch the user by ID
         ResultActions resultActions = mockMvc.perform(get("/api/v1/users/{id}", userId)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -108,7 +107,6 @@ class UserControllerTest extends BaseTest {
         String responseContent = mvcResult.getResponse().getContentAsString();
         String userId = JsonPath.read(responseContent, "$.data.id");
 
-        // Update the user
         UpdateUserRequest updateRequest = new UpdateUserRequest();
         updateRequest.setEmail("updated@example.com");
 

@@ -7,7 +7,7 @@ import java.util.Date;
 
 @Data
 @Builder
-public class DailyUsageResponse {
+public class DailyUsageRequest {
     private String userId;
     private String mdn;
     private Date usageDate;

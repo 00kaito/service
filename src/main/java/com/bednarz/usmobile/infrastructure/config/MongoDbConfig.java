@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 
 @Configuration
 @EnableMongoAuditing
-public class MongoConfig {
+public class MongoDbConfig {
     @Autowired
     private MongoDatabaseFactory mongoDatabaseFactory;
 

@@ -1,9 +1,12 @@
 package com.bednarz.usmobile.api;
 
 import com.bednarz.usmobile.application.ApiResponse;
-import com.bednarz.usmobile.domain.dailyusage.DailyUsageService;
+import com.bednarz.usmobile.application.service.UsageApplicationService;
+import com.bednarz.usmobile.domain.dto.DailyUsageRequest;
 import com.bednarz.usmobile.domain.dto.DailyUsageResponse;
+import jakarta.validation.constraints.Pattern;
 import lombok.RequiredArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,22 +19,21 @@ import java.util.List;
 @RequiredArgsConstructor
 public class DailyUsageController {
 
-    private final DailyUsageService dailyUsageService;
+    private final UsageApplicationService dailyUsageApplicationService;
 
     @GetMapping("/current")
     public ResponseEntity<ApiResponse<List<DailyUsageResponse>>> getCurrentCycleUsage(
-            @RequestParam String mdn,
+            @RequestParam @Pattern(regexp = "^[0-9]{10}$", message = "MDN must be 10 digits long") String mdn,
             @RequestParam String userId,
-            @RequestParam Date startDate,
-            @RequestParam Date endDate) {
-
-        List<DailyUsageResponse> usages = dailyUsageService.getCurrentCycleUsage(mdn, userId, startDate, endDate);
+            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date startDate,
+            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date endDate) {
+        List<DailyUsageResponse> usages = dailyUsageApplicationService.getCurrentCycleUsage(mdn, userId, startDate, endDate);
         return ResponseEntity.ok(ApiResponse.success(usages));
     }
 
     @PostMapping
-    public ResponseEntity<ApiResponse<DailyUsageResponse>> createDailyUsage(@RequestBody DailyUsageResponse dailyUsageRequest) {
-        DailyUsageResponse createdUsage = dailyUsageService.createDailyUsage(dailyUsageRequest);
+    public ResponseEntity<ApiResponse<DailyUsageResponse>> createDailyUsage(@RequestBody DailyUsageRequest dailyUsageRequest) {
+        DailyUsageResponse createdUsage = dailyUsageApplicationService.createDailyUsage(dailyUsageRequest);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(ApiResponse.success(createdUsage));
     }

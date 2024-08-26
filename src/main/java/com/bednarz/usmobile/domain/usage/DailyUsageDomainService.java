@@ -1,8 +1,9 @@
-package com.bednarz.usmobile.domain.dailyusage;
+package com.bednarz.usmobile.domain.usage;
 
-import com.bednarz.usmobile.domain.cycle.Cycle;
-import com.bednarz.usmobile.domain.cycle.CycleRepository;
+import com.bednarz.usmobile.domain.billing.Cycle;
+import com.bednarz.usmobile.domain.billing.CycleRepository;
 import com.bednarz.usmobile.domain.dto.DailyUsageDataResponse;
+import com.bednarz.usmobile.domain.dto.DailyUsageRequest;
 import com.bednarz.usmobile.domain.dto.DailyUsageResponse;
 import com.bednarz.usmobile.domain.dto.mapper.DailyUsageMapper;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +11,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import org.springframework.data.mongodb.core.aggregation.AggregationResults;
 import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -18,7 +20,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class DailyUsageService {
+public class DailyUsageDomainService {
 
     private final DailyUsageRepository dailyUsageRepository;
     private final MongoTemplate mongoTemplate;
@@ -32,10 +34,25 @@ public class DailyUsageService {
                 .collect(Collectors.toList());
     }
 
-    public DailyUsageResponse createDailyUsage(DailyUsageResponse dailyUsageRequest) {
-        DailyUsage dailyUsage = dailyUsageMapper.dailyUsageResponseToDailyUsage(dailyUsageRequest);
+    public DailyUsageResponse createDailyUsage(DailyUsageRequest dailyUsageRequest) {
+        DailyUsage dailyUsage = dailyUsageMapper.dailyUsageRequestToDailyUsage(dailyUsageRequest);
         DailyUsage savedDailyUsage = dailyUsageRepository.save(dailyUsage);
         return dailyUsageMapper.dailyUsageToDailyUsageResponse(savedDailyUsage);
+    }
+
+
+    public void transferMdn(String mdn, String fromUserId, String toUserId) {
+        Query query = new Query(Criteria.where("mdn").is(mdn).and("userId").is(fromUserId));
+        mongoTemplate.remove(query, "daily_usage");
+
+        DailyUsage resetEntry = DailyUsage.builder()
+                .mdn(mdn)
+                .userId(toUserId)
+                .usageDate(new Date())
+                .usedInMb(0.0)
+                .build();
+
+        mongoTemplate.save(resetEntry, "daily_usage");
     }
 
     List<DailyUsageDataResponse> getDailyUsageByMdnAndCycle(String mdn, String userId) {
