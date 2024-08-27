@@ -1,7 +1,7 @@
 package com.bednarz.usmobile.application.service;
 
-import com.bednarz.usmobile.domain.dto.DailyUsageRequest;
-import com.bednarz.usmobile.domain.dto.DailyUsageResponse;
+import com.bednarz.usmobile.application.dto.DailyUsageRequest;
+import com.bednarz.usmobile.application.dto.DailyUsageResponse;
 import com.bednarz.usmobile.domain.usage.DailyUsageDomainService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

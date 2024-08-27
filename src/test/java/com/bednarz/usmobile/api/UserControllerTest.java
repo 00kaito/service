@@ -1,8 +1,8 @@
 package com.bednarz.usmobile.api;
 
 import com.bednarz.usmobile.MongoBaseTest;
-import com.bednarz.usmobile.domain.dto.CreateUserRequest;
-import com.bednarz.usmobile.domain.dto.UpdateUserRequest;
+import com.bednarz.usmobile.application.dto.CreateUserRequest;
+import com.bednarz.usmobile.application.dto.UpdateUserRequest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jayway.jsonpath.JsonPath;
 import org.junit.jupiter.api.Test;

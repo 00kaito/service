@@ -1,0 +1,317 @@
+[
+  {
+    "id": "1",
+    "mdn": "1234567890",
+    "userId": "test-user-id-3",
+    "usageDate": "2024-08-01T00:00:00.000Z",
+    "usedInMb": 100.0
+  },
+  {
+    "id": "2",
+    "mdn": "1234567890",
+    "userId": "test-user-id-3",
+    "usageDate": "2024-08-02T00:00:00.000Z",
+    "usedInMb": 120.0
+  },
+  {
+    "id": "3",
+    "mdn": "1234567890",
+    "userId": "test-user-id-3",
+    "usageDate": "2024-08-03T00:00:00.000Z",
+    "usedInMb": 150.0
+  },
+  {
+    "id": "4",
+    "mdn": "1234567890",
+    "userId": "test-user-id-3",
+    "usageDate": "2024-08-04T00:00:00.000Z",
+    "usedInMb": 170.0
+  },
+  {
+    "id": "5",
+    "mdn": "1234567890",
+    "userId": "test-user-id-3",
+    "usageDate": "2024-08-05T00:00:00.000Z",
+    "usedInMb": 180.0
+  },
+  {
+    "id": "6",
+    "mdn": "1234567890",
+    "userId": "test-user-id-3",
+    "usageDate": "2024-08-06T00:00:00.000Z",
+    "usedInMb": 200.0
+  },
+  {
+    "id": "7",
+    "mdn": "1234567890",
+    "userId": "test-user-id-3",
+    "usageDate": "2024-08-07T00:00:00.000Z",
+    "usedInMb": 220.0
+  },
+  {
+    "id": "8",
+    "mdn": "1234567890",
+    "userId": "test-user-id-3",
+    "usageDate": "2024-08-08T00:00:00.000Z",
+    "usedInMb": 250.0
+  },
+  {
+    "id": "9",
+    "mdn": "1234567890",
+    "userId": "test-user-id-3",
+    "usageDate": "2024-08-09T00:00:00.000Z",
+    "usedInMb": 270.0
+  },
+  {
+    "id": "10",
+    "mdn": "1234567890",
+    "userId": "test-user-id-3",
+    "usageDate": "2024-08-10T00:00:00.000Z",
+    "usedInMb": 300.0
+  },
+  {
+    "id": "11",
+    "mdn": "1234567890",
+    "userId": "test-user-id-3",
+    "usageDate": "2024-08-11T00:00:00.000Z",
+    "usedInMb": 320.0
+  },
+  {
+    "id": "12",
+    "mdn": "1234567890",
+    "userId": "test-user-id-3",
+    "usageDate": "2024-08-12T00:00:00.000Z",
+    "usedInMb": 350.0
+  },
+  {
+    "id": "13",
+    "mdn": "1234567890",
+    "userId": "test-user-id-3",
+    "usageDate": "2024-08-13T00:00:00.000Z",
+    "usedInMb": 370.0
+  },
+  {
+    "id": "14",
+    "mdn": "1234567890",
+    "userId": "test-user-id-3",
+    "usageDate": "2024-08-14T00:00:00.000Z",
+    "usedInMb": 400.0
+  },
+  {
+    "id": "15",
+    "mdn": "1234567890",
+    "userId": "test-user-id-3",
+    "usageDate": "2024-08-15T00:00:00.000Z",
+    "usedInMb": 420.0
+  },
+  {
+    "id": "16",
+    "mdn": "2345678901",
+    "userId": "test-user-id-2",
+    "usageDate": "2024-08-01T00:00:00.000Z",
+    "usedInMb": 50.0
+  },
+  {
+    "id": "17",
+    "mdn": "2345678901",
+    "userId": "test-user-id-2",
+    "usageDate": "2024-08-02T00:00:00.000Z",
+    "usedInMb": 70.0
+  },
+  {
+    "id": "18",
+    "mdn": "2345678901",
+    "userId": "test-user-id-2",
+    "usageDate": "2024-08-03T00:00:00.000Z",
+    "usedInMb": 90.0
+  },
+  {
+    "id": "19",
+    "mdn": "2345678901",
+    "userId": "test-user-id-2",
+    "usageDate": "2024-08-04T00:00:00.000Z",
+    "usedInMb": 100.0
+  },
+  {
+    "id": "20",
+    "mdn": "2345678901",
+    "userId": "test-user-id-2",
+    "usageDate": "2024-08-05T00:00:00.000Z",
+    "usedInMb": 120.0
+  },
+  {
+    "id": "21",
+    "mdn": "2345678901",
+    "userId": "test-user-id-2",
+    "usageDate": "2024-08-06T00:00:00.000Z",
+    "usedInMb": 150.0
+  },
+  {
+    "id": "22",
+    "mdn": "2345678901",
+    "userId": "test-user-id-2",
+    "usageDate": "2024-08-07T00:00:00.000Z",
+    "usedInMb": 170.0
+  },
+  {
+    "id": "23",
+    "mdn": "2345678901",
+    "userId": "test-user-id-2",
+    "usageDate": "2024-08-08T00:00:00.000Z",
+    "usedInMb": 190.0
+  },
+  {
+    "id": "24",
+    "mdn": "2345678901",
+    "userId": "test-user-id-2",
+    "usageDate": "2024-08-09T00:00:00.000Z",
+    "usedInMb": 200.0
+  },
+  {
+    "id": "25",
+    "mdn": "2345678901",
+    "userId": "test-user-id-2",
+    "usageDate": "2024-08-10T00:00:00.000Z",
+    "usedInMb": 220.0
+  },
+  {
+    "id": "26",
+    "mdn": "2345678901",
+    "userId": "test-user-id-2",
+    "usageDate": "2024-08-11T00:00:00.000Z",
+    "usedInMb": 240.0
+  },
+  {
+    "id": "27",
+    "mdn": "2345678901",
+    "userId": "test-user-id-2",
+    "usageDate": "2024-08-12T00:00:00.000Z",
+    "usedInMb": 260.0
+  },
+  {
+    "id": "28",
+    "mdn": "2345678901",
+    "userId": "test-user-id-2",
+    "usageDate": "2024-08-13T00:00:00.000Z",
+    "usedInMb": 280.0
+  },
+  {
+    "id": "29",
+    "mdn": "2345678901",
+    "userId": "test-user-id-2",
+    "usageDate": "2024-08-14T00:00:00.000Z",
+    "usedInMb": 300.0
+  },
+  {
+    "id": "30",
+    "mdn": "2345678901",
+    "userId": "test-user-id-2",
+    "usageDate": "2024-08-15T00:00:00.000Z",
+    "usedInMb": 320.0
+  },
+  {
+    "id": "31",
+    "mdn": "3456789012",
+    "userId": "test-user-id-3",
+    "usageDate": "2024-08-01T00:00:00.000Z",
+    "usedInMb": 60.0
+  },
+  {
+    "id": "32",
+    "mdn": "3456789012",
+    "userId": "test-user-id-3",
+    "usageDate": "2024-08-02T00:00:00.000Z",
+    "usedInMb": 80.0
+  },
+  {
+    "id": "33",
+    "mdn": "3456789012",
+    "userId": "test-user-id-3",
+    "usageDate": "2024-08-03T00:00:00.000Z",
+    "usedInMb": 100.0
+  },
+  {
+    "id": "34",
+    "mdn": "3456789012",
+    "userId": "test-user-id-3",
+    "usageDate": "2024-08-04T00:00:00.000Z",
+    "usedInMb": 120.0
+  },
+  {
+    "id": "35",
+    "mdn": "3456789012",
+    "userId": "test-user-id-3",
+    "usageDate": "2024-08-05T00:00:00.000Z",
+    "usedInMb": 140.0
+  },
+  {
+    "id": "36",
+    "mdn": "3456789012",
+    "userId": "test-user-id-3",
+    "usageDate": "2024-08-06T00:00:00.000Z",
+    "usedInMb": 160.0
+  },
+  {
+    "id": "37",
+    "mdn": "3456789012",
+    "userId": "test-user-id-3",
+    "usageDate": "2024-08-07T00:00:00.000Z",
+    "usedInMb": 180.0
+  },
+  {
+    "id": "38",
+    "mdn": "3456789012",
+    "userId": "test-user-id-3",
+    "usageDate": "2024-08-08T00:00:00.000Z",
+    "usedInMb": 200.0
+  },
+  {
+    "id": "39",
+    "mdn": "3456789012",
+    "userId": "test-user-id-3",
+    "usageDate": "2024-08-09T00:00:00.000Z",
+    "usedInMb": 220.0
+  },
+  {
+    "id": "40",
+    "mdn": "3456789012",
+    "userId": "test-user-id-3",
+    "usageDate": "2024-08-10T00:00:00.000Z",
+    "usedInMb": 240.0
+  },
+  {
+    "id": "41",
+    "mdn": "3456789012",
+    "userId": "test-user-id-3",
+    "usageDate": "2024-08-11T00:00:00.000Z",
+    "usedInMb": 260.0
+  },
+  {
+    "id": "42",
+    "mdn": "3456789012",
+    "userId": "test-user-id-3",
+    "usageDate": "2024-08-12T00:00:00.000Z",
+    "usedInMb": 280.0
+  },
+  {
+    "id": "43",
+    "mdn": "3456789012",
+    "userId": "test-user-id-3",
+    "usageDate": "2024-08-13T00:00:00.000Z",
+    "usedInMb": 300.0
+  },
+  {
+    "id": "44",
+    "mdn": "3456789012",
+    "userId": "test-user-id-3",
+    "usageDate": "2024-08-14T00:00:00.000Z",
+    "usedInMb": 320.0
+  },
+  {
+    "id": "45",
+    "mdn": "3456789012",
+    "userId": "test-user-id-3",
+    "usageDate": "2024-08-15T00:00:00.000Z",
+    "usedInMb": 340.0
+  }
+]

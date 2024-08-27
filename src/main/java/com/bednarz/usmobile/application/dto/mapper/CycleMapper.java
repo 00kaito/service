@@ -1,7 +1,7 @@
-package com.bednarz.usmobile.domain.dto.mapper;
+package com.bednarz.usmobile.application.dto.mapper;
 
+import com.bednarz.usmobile.application.dto.CycleDataResponse;
 import com.bednarz.usmobile.domain.billing.Cycle;
-import com.bednarz.usmobile.domain.dto.CycleDataResponse;
 import org.mapstruct.Mapper;
 
 @Mapper

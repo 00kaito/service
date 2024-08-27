@@ -1,4 +1,4 @@
-package com.bednarz.usmobile;
+package com.bednarz.usmobile.infrastructure.util;
 
 import com.bednarz.usmobile.domain.billing.Cycle;
 import com.bednarz.usmobile.domain.usage.DailyUsage;

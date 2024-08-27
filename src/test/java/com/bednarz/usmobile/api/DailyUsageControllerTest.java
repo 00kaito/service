@@ -1,9 +1,9 @@
 package com.bednarz.usmobile.api;
 
 import com.bednarz.usmobile.MongoBaseTest;
+import com.bednarz.usmobile.application.dto.DailyUsageRequest;
+import com.bednarz.usmobile.application.dto.DailyUsageResponse;
 import com.bednarz.usmobile.application.service.UsageApplicationService;
-import com.bednarz.usmobile.domain.dto.DailyUsageRequest;
-import com.bednarz.usmobile.domain.dto.DailyUsageResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

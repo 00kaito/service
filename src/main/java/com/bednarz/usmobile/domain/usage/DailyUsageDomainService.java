@@ -1,11 +1,12 @@
 package com.bednarz.usmobile.domain.usage;
 
+import com.bednarz.usmobile.application.dto.DailyUsageDataResponse;
+import com.bednarz.usmobile.application.dto.DailyUsageRequest;
+import com.bednarz.usmobile.application.dto.DailyUsageResponse;
+import com.bednarz.usmobile.application.dto.mapper.DailyUsageMapper;
 import com.bednarz.usmobile.domain.billing.Cycle;
-import com.bednarz.usmobile.domain.billing.CycleRepository;
-import com.bednarz.usmobile.domain.dto.DailyUsageDataResponse;
-import com.bednarz.usmobile.domain.dto.DailyUsageRequest;
-import com.bednarz.usmobile.domain.dto.DailyUsageResponse;
-import com.bednarz.usmobile.domain.dto.mapper.DailyUsageMapper;
+import com.bednarz.usmobile.infrastructure.persistence.CycleMongoRepository;
+import com.bednarz.usmobile.infrastructure.persistence.DailyUsageMongoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;
@@ -22,9 +23,9 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class DailyUsageDomainService {
 
-    private final DailyUsageRepository dailyUsageRepository;
+    private final DailyUsageMongoRepository dailyUsageRepository;
     private final MongoTemplate mongoTemplate;
-    private final CycleRepository cycleRepository;
+    private final CycleMongoRepository cycleRepository;
     private final DailyUsageMapper dailyUsageMapper;
 
     public List<DailyUsageResponse> getCurrentCycleUsage(String mdn, String userId, Date startDate, Date endDate) {

@@ -1,4 +1,4 @@
-package com.bednarz.usmobile.domain.dto;
+package com.bednarz.usmobile.application.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

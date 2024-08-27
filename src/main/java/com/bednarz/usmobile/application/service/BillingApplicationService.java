@@ -1,7 +1,7 @@
 package com.bednarz.usmobile.application.service;
 
+import com.bednarz.usmobile.application.dto.CycleDataResponse;
 import com.bednarz.usmobile.domain.billing.CycleDomainService;
-import com.bednarz.usmobile.domain.dto.CycleDataResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

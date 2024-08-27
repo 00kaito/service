@@ -1,9 +1,9 @@
 package com.bednarz.usmobile.api;
 
 import com.bednarz.usmobile.application.ApiResponse;
+import com.bednarz.usmobile.application.dto.DailyUsageRequest;
+import com.bednarz.usmobile.application.dto.DailyUsageResponse;
 import com.bednarz.usmobile.application.service.UsageApplicationService;
-import com.bednarz.usmobile.domain.dto.DailyUsageRequest;
-import com.bednarz.usmobile.domain.dto.DailyUsageResponse;
 import jakarta.validation.constraints.Pattern;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;

@@ -1,4 +1,4 @@
-package com.bednarz.usmobile.domain.dto;
+package com.bednarz.usmobile.application.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -22,6 +22,5 @@ public class CycleDataResponse {
     private Date startDate;
 
     @NotNull(message = "End date must not be null")
-    @PastOrPresent(message = "End date must be in the past or present")
     private Date endDate;
 }

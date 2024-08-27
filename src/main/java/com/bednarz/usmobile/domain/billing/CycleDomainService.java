@@ -1,8 +1,9 @@
 package com.bednarz.usmobile.domain.billing;
 
-import com.bednarz.usmobile.domain.dto.CycleDataResponse;
-import com.bednarz.usmobile.domain.dto.mapper.CycleMapper;
+import com.bednarz.usmobile.application.dto.CycleDataResponse;
+import com.bednarz.usmobile.application.dto.mapper.CycleMapper;
 import com.bednarz.usmobile.infrastructure.exception.ResourceNotFoundException;
+import com.bednarz.usmobile.infrastructure.persistence.CycleMongoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -18,7 +19,7 @@ import java.util.stream.Collectors;
 public class CycleDomainService {
     public static final int phoneNumberLength = 10;
 
-    private final CycleRepository cycleRepository;
+    private final CycleMongoRepository cycleRepository;
     private final CycleMapper cycleMapper;
     private final MongoTemplate mongoTemplate;
 

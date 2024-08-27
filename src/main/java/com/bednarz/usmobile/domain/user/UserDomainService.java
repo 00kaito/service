@@ -1,11 +1,13 @@
 package com.bednarz.usmobile.domain.user;
 
-import com.bednarz.usmobile.domain.dto.CreateUserRequest;
-import com.bednarz.usmobile.domain.dto.UpdateUserRequest;
-import com.bednarz.usmobile.domain.dto.UserResponse;
-import com.bednarz.usmobile.domain.dto.mapper.UserMapper;
+import com.bednarz.usmobile.application.dto.CreateUserRequest;
+import com.bednarz.usmobile.application.dto.UpdateUserRequest;
+import com.bednarz.usmobile.application.dto.UserResponse;
+import com.bednarz.usmobile.application.dto.mapper.UserMapper;
 import com.bednarz.usmobile.infrastructure.exception.ResourceNotFoundException;
+import com.bednarz.usmobile.infrastructure.persistence.UserMongoRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -14,11 +16,13 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UserDomainService {
 
-    private final UserRepository userRepository;
+    private final UserMongoRepository userRepository;
     private final UserMapper userMapper;
 
     public UserResponse createUser(CreateUserRequest createUserRequest) {
         User user = userMapper.createUserRequestToUser(createUserRequest);
+        String hashedPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(hashedPassword);
         User savedUser = userRepository.save(user);
         return userMapper.userToUserResponse(savedUser);
     }
@@ -48,4 +52,6 @@ public class UserDomainService {
         User updatedUser = userRepository.save(user);
         return userMapper.userToUserResponse(updatedUser);
     }
+
+    private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 }

@@ -1,7 +1,7 @@
-package com.bednarz.usmobile.domain.dto.mapper;
+package com.bednarz.usmobile.application.dto.mapper;
 
-import com.bednarz.usmobile.domain.dto.DailyUsageRequest;
-import com.bednarz.usmobile.domain.dto.DailyUsageResponse;
+import com.bednarz.usmobile.application.dto.DailyUsageRequest;
+import com.bednarz.usmobile.application.dto.DailyUsageResponse;
 import com.bednarz.usmobile.domain.usage.DailyUsage;
 import org.mapstruct.Mapper;
 

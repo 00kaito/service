@@ -1,10 +1,10 @@
 package com.bednarz.usmobile.api;
 
 import com.bednarz.usmobile.application.ApiResponse;
+import com.bednarz.usmobile.application.dto.CreateUserRequest;
+import com.bednarz.usmobile.application.dto.UpdateUserRequest;
+import com.bednarz.usmobile.application.dto.UserResponse;
 import com.bednarz.usmobile.application.service.UserApplicationService;
-import com.bednarz.usmobile.domain.dto.CreateUserRequest;
-import com.bednarz.usmobile.domain.dto.UpdateUserRequest;
-import com.bednarz.usmobile.domain.dto.UserResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

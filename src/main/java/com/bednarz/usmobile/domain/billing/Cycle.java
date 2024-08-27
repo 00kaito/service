@@ -30,5 +30,4 @@ public class Cycle extends AuditInfo {
     private String userId;
 
     boolean active = true;
-
 }

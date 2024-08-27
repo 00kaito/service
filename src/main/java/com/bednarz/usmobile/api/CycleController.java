@@ -1,8 +1,8 @@
 package com.bednarz.usmobile.api;
 
 import com.bednarz.usmobile.application.ApiResponse;
+import com.bednarz.usmobile.application.dto.CycleDataResponse;
 import com.bednarz.usmobile.application.service.BillingApplicationService;
-import com.bednarz.usmobile.domain.dto.CycleDataResponse;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;

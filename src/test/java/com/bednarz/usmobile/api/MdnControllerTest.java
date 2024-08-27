@@ -19,7 +19,7 @@ import org.springframework.test.web.servlet.ResultActions;
 
 import java.util.List;
 
-import static com.bednarz.usmobile.LoadDataUtil.*;
+import static com.bednarz.usmobile.infrastructure.util.LoadDataUtil.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 

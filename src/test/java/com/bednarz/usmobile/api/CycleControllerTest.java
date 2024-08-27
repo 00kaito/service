@@ -1,11 +1,11 @@
 package com.bednarz.usmobile.api;
 
 import com.bednarz.usmobile.MongoBaseTest;
+import com.bednarz.usmobile.application.dto.CycleDataResponse;
 import com.bednarz.usmobile.domain.billing.Cycle;
-import com.bednarz.usmobile.domain.billing.CycleRepository;
-import com.bednarz.usmobile.domain.dto.CycleDataResponse;
 import com.bednarz.usmobile.domain.usage.DailyUsage;
 import com.bednarz.usmobile.domain.user.User;
+import com.bednarz.usmobile.infrastructure.persistence.CycleMongoRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -21,7 +21,7 @@ import org.springframework.test.web.servlet.ResultActions;
 import java.util.Date;
 import java.util.List;
 
-import static com.bednarz.usmobile.LoadDataUtil.*;
+import static com.bednarz.usmobile.infrastructure.util.LoadDataUtil.*;
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -40,7 +40,7 @@ class CycleControllerTest extends MongoBaseTest {
     private ObjectMapper objectMapper;
 
     @Autowired
-    CycleRepository cycleRepository;
+    CycleMongoRepository cycleRepository;
 
     @Autowired
     MongoTemplate mongoTemplate;
