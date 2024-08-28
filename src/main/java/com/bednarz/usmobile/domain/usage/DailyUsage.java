@@ -1,14 +1,13 @@
 package com.bednarz.usmobile.domain.usage;
 
-import com.bednarz.usmobile.infrastructure.audit.AuditInfo;
+import com.bednarz.usmobile.infrastructure.shared.audit.AuditInfo;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.CompoundIndex;
 import org.springframework.data.mongodb.core.index.CompoundIndexes;
-import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Document(collection = "daily_usage")
 @Builder
@@ -17,16 +16,13 @@ import java.util.Date;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @CompoundIndexes({
-        @CompoundIndex(name = "user_usageDate_idx", def = "{'userId': 1, 'usageDate': 1}"),
-        @CompoundIndex(name = "mdn_idx", def = "{'mdn': 1}")
+        @CompoundIndex(name = "user_mdn_usageDate_idx", def = "{'userId': 1, 'mdn': 1, 'usageDate': 1}")
 })
 public class DailyUsage extends AuditInfo {
     @Id
     private String id;
-    @Indexed
     private String mdn;
     private String userId;
-    @Indexed
-    private Date usageDate;
+    private LocalDate usageDate;
     private Double usedInMb;
 }

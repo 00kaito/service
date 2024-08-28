@@ -6,14 +6,17 @@ import com.bednarz.usmobile.application.dto.UpdateUserRequest;
 import com.bednarz.usmobile.application.dto.UserResponse;
 import com.bednarz.usmobile.application.service.UserApplicationService;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/users")
 @RequiredArgsConstructor
+@Validated
 public class UserController {
 
     private final UserApplicationService userService;
@@ -26,7 +29,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ApiResponse<UserResponse>> getUserById(@PathVariable String id) {
+    public ResponseEntity<ApiResponse<UserResponse>> getUserById(@PathVariable @NotEmpty String id) {
         return userService.getUserById(id)
                 .map(user -> ResponseEntity.ok(ApiResponse.success(user)))
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND)
@@ -34,7 +37,7 @@ public class UserController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<ApiResponse<UserResponse>> updateUser(@PathVariable String id, @RequestBody @Valid UpdateUserRequest updateUserRequest) {
+    public ResponseEntity<ApiResponse<UserResponse>> updateUser(@PathVariable @NotEmpty String id, @RequestBody @Valid UpdateUserRequest updateUserRequest) {
         UserResponse updatedUser = userService.updateUser(id, updateUserRequest);
         return ResponseEntity.ok(ApiResponse.success(updatedUser));
     }

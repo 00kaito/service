@@ -5,11 +5,11 @@ import com.bednarz.usmobile.application.dto.CreateUserRequest;
 import com.bednarz.usmobile.application.dto.UpdateUserRequest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jayway.jsonpath.JsonPath;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -31,11 +31,8 @@ class UserControllerTest extends MongoBaseTest {
     @Autowired
     private ObjectMapper objectMapper;
 
-    @Autowired
-    MongoTemplate mongoTemplate;
-
-
     @Test
+    @DisplayName("Create User: Valid input, expecting successful creation")
     public void createUserTest() throws Exception {
         CreateUserRequest request = new CreateUserRequest();
         request.setFirstName("John");
@@ -52,6 +49,7 @@ class UserControllerTest extends MongoBaseTest {
     }
 
     @Test
+    @DisplayName("Create User: Invalid input, expecting validation errors")
     public void createUserTest_ReturnsValidationErrors() throws Exception {
         CreateUserRequest request = new CreateUserRequest();
         request.setFirstName("John");
@@ -68,6 +66,7 @@ class UserControllerTest extends MongoBaseTest {
     }
 
     @Test
+    @DisplayName("Get User by ID: Valid ID, expecting correct user data")
     public void getUserByIdTest() throws Exception {
         CreateUserRequest request = new CreateUserRequest();
         request.setFirstName("John");
@@ -91,6 +90,7 @@ class UserControllerTest extends MongoBaseTest {
     }
 
     @Test
+    @DisplayName("Update User: Valid ID and data, expecting successful update")
     public void updateUserTest() throws Exception {
         CreateUserRequest request = new CreateUserRequest();
         request.setFirstName("John");

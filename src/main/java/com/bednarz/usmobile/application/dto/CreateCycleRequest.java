@@ -2,16 +2,17 @@ package com.bednarz.usmobile.application.dto;
 
 import com.bednarz.usmobile.infrastructure.shared.ValidMdn;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
 @Data
-public class CycleDataResponse {
-
-    private String id;
+@NoArgsConstructor
+public class CreateCycleRequest {
 
     @NotBlank(message = "MDN must not be blank")
     @ValidMdn
@@ -23,4 +24,7 @@ public class CycleDataResponse {
 
     @NotNull(message = "End date must not be null")
     private LocalDate endDate;
+
+    @NotEmpty(message = "userId cannot be empty")
+    String userId;
 }

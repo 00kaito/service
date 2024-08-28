@@ -12,3 +12,4 @@ public class UpdateUserRequest {
     @Size(min = 3, message = "Email name must be at least 3 characters long if provided")
     private String email;
 }
+

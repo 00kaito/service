@@ -1,13 +1,13 @@
 package com.bednarz.usmobile.domain.billing;
 
-import com.bednarz.usmobile.infrastructure.audit.AuditInfo;
+import com.bednarz.usmobile.infrastructure.shared.audit.AuditInfo;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.CompoundIndex;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Document(collection = "cycle")
 @Builder
@@ -23,11 +23,9 @@ public class Cycle extends AuditInfo {
     @Indexed(unique = true)
     private String mdn;
 
-    private Date startDate;
-    private Date endDate;
+    private LocalDate startDate;
+    private LocalDate endDate;
 
     @Indexed
     private String userId;
-
-    boolean active = true;
 }

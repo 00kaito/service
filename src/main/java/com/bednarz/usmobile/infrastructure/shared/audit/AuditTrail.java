@@ -1,4 +1,4 @@
-package com.bednarz.usmobile.infrastructure.audit;
+package com.bednarz.usmobile.infrastructure.shared.audit;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

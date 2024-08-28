@@ -19,5 +19,12 @@
     "lastName": "Smith",
     "email": "alice.smith@example.com",
     "password": "password789"
+  },
+  {
+    "id": "new-usmobile-user",
+    "firstName": "Tom",
+    "lastName": "Cruise",
+    "email": "tom.c@movie.com",
+    "password": "missionimposible"
   }
 ]

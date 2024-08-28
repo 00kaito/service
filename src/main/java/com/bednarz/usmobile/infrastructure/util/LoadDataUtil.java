@@ -5,28 +5,34 @@ import com.bednarz.usmobile.domain.usage.DailyUsage;
 import com.bednarz.usmobile.domain.user.User;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
+@Component
+@RequiredArgsConstructor
 public class LoadDataUtil {
 
-    public static List<User> loadUsers(ObjectMapper objectMapper, String filePath) throws IOException {
+    private final ObjectMapper objectMapper;
+
+    public List<User> loadUsers(String filePath) throws IOException {
         InputStream inputStream = new ClassPathResource(filePath).getInputStream();
         return objectMapper.readValue(inputStream, new TypeReference<List<User>>() {
         });
     }
 
-    public static List<Cycle> loadCycles(ObjectMapper objectMapper, String filePath) throws IOException {
+    public List<Cycle> loadCycles(String filePath) throws IOException {
         InputStream inputStream = new ClassPathResource(filePath).getInputStream();
         return objectMapper.readValue(inputStream, new TypeReference<List<Cycle>>() {
         });
     }
 
-    public static List<DailyUsage> loadDailyUsage(ObjectMapper objectMapper, String filePath) throws IOException {
+    public List<DailyUsage> loadDailyUsage(String filePath) throws IOException {
         InputStream inputStream = new ClassPathResource(filePath).getInputStream();
         return objectMapper.readValue(inputStream, new TypeReference<List<DailyUsage>>() {
         });

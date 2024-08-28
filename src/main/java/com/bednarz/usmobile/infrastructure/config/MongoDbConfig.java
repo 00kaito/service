@@ -1,6 +1,6 @@
 package com.bednarz.usmobile.infrastructure.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.MongoDatabaseFactory;
@@ -9,9 +9,9 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 
 @Configuration
 @EnableMongoAuditing
+@RequiredArgsConstructor
 public class MongoDbConfig {
-    @Autowired
-    private MongoDatabaseFactory mongoDatabaseFactory;
+    private final MongoDatabaseFactory mongoDatabaseFactory;
 
     @Bean
     public MongoTemplate mongoTemplate() {

@@ -1,26 +1,31 @@
 package com.bednarz.usmobile.application.service;
 
+import com.bednarz.usmobile.application.dto.CreateCycleRequest;
 import com.bednarz.usmobile.application.dto.CycleDataResponse;
 import com.bednarz.usmobile.domain.billing.CycleDomainService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class BillingApplicationService {
     private final CycleDomainService cycleService;
 
     public List<CycleDataResponse> getCycleHistoryByMdn(String mdn) {
-        return cycleService.getCycleHistoryByMdn(mdn);
+        log.info("Getting cycle history for MDN: {}", mdn);
+        List<CycleDataResponse> response = cycleService.getCycleHistoryByMdn(mdn);
+        log.debug("Retrieved {} cycle history entries for MDN: {}", response.size(), mdn);
+        return response;
     }
 
-    public List<CycleDataResponse> getCurrentCycleUsage(String mdn, String userId) {
-        return cycleService.getCurrentCycleUsage(mdn, userId);
-    }
-
-    public CycleDataResponse createCycle(CycleDataResponse cycleRequest) {
-        return cycleService.createCycle(cycleRequest);
+    public CycleDataResponse createCycle(CreateCycleRequest cycleRequest) {
+        log.info("Creating new cycle for MDN: {}", cycleRequest.getMdn());
+        CycleDataResponse response = cycleService.createCycle(cycleRequest);
+        log.debug("Created new cycle for MDN: {}", response.getMdn());
+        return response;
     }
 }

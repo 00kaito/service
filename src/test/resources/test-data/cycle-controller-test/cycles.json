@@ -2,22 +2,22 @@
   {
     "id": "1",
     "mdn": "1234567890",
-    "startDate": "2024-08-01T00:00:00.000Z",
-    "endDate": "2024-08-31T23:59:59.999Z",
+    "startDate": "2024-08-01",
+    "endDate": "2024-08-31",
     "userId": "test-user-id-1"
   },
   {
     "id": "2",
     "mdn": "2345678901",
-    "startDate": "2024-08-01T00:00:00.000Z",
-    "endDate": "2024-08-31T23:59:59.999Z",
+    "startDate": "2024-08-01",
+    "endDate": "2024-08-31",
     "userId": "test-user-id-2"
   },
   {
     "id": "3",
     "mdn": "3456789012",
-    "startDate": "2024-08-01T00:00:00.000Z",
-    "endDate": "2024-08-31T23:59:59.999Z",
+    "startDate": "2024-08-01",
+    "endDate": "2024-08-31",
     "userId": "test-user-id-3"
   }
 ]

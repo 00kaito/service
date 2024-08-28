@@ -1,6 +1,6 @@
 package com.bednarz.usmobile.domain.user;
 
-import com.bednarz.usmobile.infrastructure.audit.AuditInfo;
+import com.bednarz.usmobile.infrastructure.shared.audit.AuditInfo;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
